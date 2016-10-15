@@ -13,12 +13,12 @@
 	http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	<context:component-scan base-package="br.senai.sp.informatica.todolist" />
+	<context:component-scan base-package="br.com.tradeweb" />
 	<mvc:annotation-driven />
 
 	<bean id="mysqlDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/todolistdois" />
+		<property name="url" value="jdbc:mysql://localhost:3306/senai" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
@@ -36,4 +36,19 @@
 	</bean>
 	
 	<tx:annotation-driven />
+	
+	<bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <mvc:annotation-driven />
+
+    <context:annotation-config />
+
+    <context:component-scan base-package="br.com.tradeweb.controller" />
+
+    <mvc:resources mapping="/assets/**" location="/assets/" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
 </beans>

@@ -1,10 +1,12 @@
 package br.com.tradeweb.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Mercado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +16,7 @@ public class Mercado {
 	private String nome;
 	private String razaoSocial;
 	
-	@OneToMany
+	@ManyToOne
 	private Localizacao localizacao;
 
 	public Long getId() {

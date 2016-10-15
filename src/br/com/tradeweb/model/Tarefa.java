@@ -6,7 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Tarefa {
@@ -15,11 +17,13 @@ public class Tarefa {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@OneToMany
 	private List<Mercado> mercados;
 	
+	@OneToMany
 	private List<Rota> rotas;
 	
-	@OneToMany
+	@ManyToOne
 	private Promotor promotor;
 
 	public Long getId() {
